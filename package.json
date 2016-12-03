@@ -1,0 +1,27 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "Voting app for FCC's Backend Certification",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abagasra98/Voting-App.git"
+  },
+  "author": "abagasra98",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abagasra98/Voting-App/issues"
+  },
+  "homepage": "https://github.com/abagasra98/Voting-App#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "mongoose": "^4.7.1",
+    "passport": "^0.3.2",
+    "passport-github": "^1.1.0"
+  }
+}
