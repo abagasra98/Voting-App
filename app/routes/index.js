@@ -1,8 +1,10 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+var PollHandler = require(path + '/app/controllers/pollHandler.server.js');
 
 module.exports = function(app, passport) {
   var clickHandler = new ClickHandler();
+  var pollHandler = new PollHandler();
 
   app.route('/')
       .get(isLoggedIn, function(req, res) {
@@ -25,16 +27,21 @@ module.exports = function(app, passport) {
         res.sendFile(path + '/public/profile.html');
       });
 
-  app.route('/api/:id')
+  app.route('/api/user/:id')
       .get(isLoggedIn, function(req, res) {
-        res.json(req.user.github);
+        res.json(req.user.twitter);
       });
 
-  app.route('/auth/github')
-      .get(passport.authenticate('github'));
+  app.route('/api/poll')
+      .get(isLoggedIn, function(req, res) {
+        res.json(pollHandler.getPoll);
+      });
 
-  app.route('/auth/github/callback')
-      .get(passport.authenticate('github', {
+  app.route('/auth/twitter')
+      .get(passport.authenticate('twitter'));
+
+  app.route('/auth/twitter/callback')
+      .get(passport.authenticate('twitter', {
         successRedirect: '/',
         failureRedirect: '/login'
       }));
@@ -48,6 +55,20 @@ module.exports = function(app, passport) {
       .get(clickHandler.getClicks)
       .post(clickHandler.addClick)
       .delete(clickHandler.resetClicks);
+
+  app.route('/newpoll')
+      .get(function(req, res) {
+        res.sendFile(path + '/public/newPoll.html');
+      })
+      .post(pollHandler.createNewPoll);
+
+  app.route('/polls')
+      .get(function(req, res) {
+        res.sendFile(path + '/public/pollList.html');
+      })
+
+  app.route('*')
+      .get(function(req, res) {res.sendFile(path + '/public/404.html')});
 
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())

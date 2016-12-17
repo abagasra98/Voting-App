@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Create a New Poll</title>
+    <link href="/public/css/skeleton.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="container">
+      <form method="post" class="container" onsubmit="/newpoll">
+        <div class="row">
+          <div class="six columns">
+            <label for="newpoll-title">Title:</label>
+            <input class="u-full-width" type="text" placeholder="Enter your question here" name="questionInput">
+          </div>
+        </div>
+          <label for="newpoll-options">Options (separated by commas)</label>
+          <textarea class="u-full-width" placeholder="Enter your question here (separated by commas)" name="options"></textarea>
+          <input class="button-primary" type="submit" value="Submit">
+        </form>
+
+      <script type="text/javascript" src=""></script>
+    </body>
+
+</html>

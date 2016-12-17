@@ -1,4 +1,4 @@
-/****** Main Styling ******/
+﻿/****** Main Styling ******/
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -101,6 +101,11 @@ img {
 .btn-container {    /* Styling for the div that contains the buttons */
     margin: -10px auto 0 auto;
     text-align: center;
+}
+
+.form-container {
+  margin: -10px auto 0 auto;
+  text-align: center;
 }
 
 .btn {  /* Styling for buttons */
