@@ -9,17 +9,15 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="two columns">
-        <h2 id="poll-title"></h2>
+        <h3 id="poll-title"></h3>
         <p>By: <span id="poll-owner"></span></p>
-      </div>
     </div>
 
-    <form method="post" onsubmit="/vote">
+    <form method="post" onsubmit="/poll">
       <div class="row">
         <div class="six columns">
           <label for="voteSubmissionTitle">My Vote:</label>
-          <select class="u-full-width" id="poll-options">
+          <select class="u-full-width" id="poll-options" name="option">
           </select>
         </div>
       </div>

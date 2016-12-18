@@ -32,10 +32,8 @@ module.exports = function(app, passport) {
         res.json(req.user.twitter);
       });
 
-  app.route('/api/poll')
-      .get(isLoggedIn, function(req, res) {
-        res.json(pollHandler.getPoll);
-      });
+  app.route('/api/poll/')
+      .get(isLoggedIn, pollHandler.getPoll);
 
   app.route('/auth/twitter')
       .get(passport.authenticate('twitter'));
@@ -63,9 +61,15 @@ module.exports = function(app, passport) {
       .post(pollHandler.createNewPoll);
 
   app.route('/polls')
-      .get(function(req, res) {
+      .get(isLoggedIn, function(req, res) {
         res.sendFile(path + '/public/pollList.html');
       })
+
+  app.route('/poll')
+      .get(isLoggedIn, function(req, res) {
+        res.sendFile(path + '/public/poll.html');
+      })
+      .post(pollHandler.recordVote);
 
   app.route('*')
       .get(function(req, res) {res.sendFile(path + '/public/404.html')});
